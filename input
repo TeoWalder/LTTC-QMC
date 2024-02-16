@@ -1,0 +1,5 @@
+dif             #  'var' for Variational MC or 'dif' for Pure Diffusion MC
+2.d0            #  a parameter value
+2               #  number of electrons
+He.xyz          #  .xyz file
+-2.91d0         #  Reference Energy (PDMC)
