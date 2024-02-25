@@ -1,0 +1,9 @@
+dif               # var (vmc) or dif (pdmc)
+1.10d0            # Wavefunction Parameter 'a' in exp(-a*|r|)
+2                 # n of Electrons
+He.xyz            # Coordinate file (xyz)
+0.1d0             # Time Step
+10000             # n of Steps
+50                # n of Walkers
+-2.90d0           # reference energy
+100.d0            # projection time 
