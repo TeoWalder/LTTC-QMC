@@ -1,0 +1,18 @@
+dif		# var (vmc) or dif (pdmc)
+1.2		# Wavefunction Parameter 'a' in exp(-a*|r|)
+2		# n of Electrons
+H3+.xyz		# Coordinate file (xyz)
+0.001		# Time Step
+10000		# n of Steps
+500		# n of Walkers
+
+Only for Pure Diffusion Monte Carlo:
+-1.3 	  	# reference energy (a.u)
+10000		# projection time 
+
+Exact energies (CCSD(T) cc-pVTZ):
+H 	-0.5
+He 	-2.903
+H2+ 	-0.557
+H2 	-1.171
+H3+ 	-1.342
