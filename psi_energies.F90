@@ -20,7 +20,7 @@ real(8) function potential(r,ne,Rn,nn,Z)
 
       if (dist.le.1.d-6) then
         potential = potential - huge(1.d0)
-        write(*,*) "*** WARNING, el-Nu potential diverges ***"
+        write(*,*) '*** WARNING, el-Nu potential diverges'
       else
         potential = potential - Z(i)/dist
       end if
@@ -36,7 +36,7 @@ real(8) function potential(r,ne,Rn,nn,Z)
 
       if (dist.le.1.d-6) then
         potential = potential + huge(1.d0)
-        write(*,*) "*** WARNING, el-el potential diverges ***"
+        write(*,*) '*** WARNING, el-el potential diverges'
       else
         potential = potential + 1.d0/dist
       end if
@@ -52,7 +52,7 @@ real(8) function potential(r,ne,Rn,nn,Z)
 
       if (dist.le.1.d-6) then
         potential = potential + huge(1.d0)
-        write(*,*) "*** WARNING, Nu-Nu potential diverges ***"
+        write(*,*) '*** WARNING, Nu-Nu potential diverges'
       else
         potential = potential + Z(i)*Z(i)/dist
       end if
@@ -93,10 +93,10 @@ real(8) function kinetic(a,r,ne,Rn,nn)
       dist = dsqrt(dr(1)*dr(1) + dr(2)*dr(2) + dr(3)*dr(3))
   
       if (dist.le.1.d-6) then
-        write(*,*) "*** WARNING, kinetic energy diverges ***"
+        write(*,*) '*** WARNING, kinetic energy diverges'
         k2 = k2 + huge(1.d0)
       else if (psi_tot.le.1.d-6) then
-        write(*,*) "*** WARNING, kinetic energy diverges ***"
+        write(*,*) '*** WARNING, kinetic energy diverges'
         k2 = k2 + huge(1.d0)
       else
         k2 = k2 + a/dist * ratiopsi
