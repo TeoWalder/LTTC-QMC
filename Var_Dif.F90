@@ -23,6 +23,7 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
   sq_dt = dsqrt(dt)
 
   ! Initialization
+
   energy = 0.d0
   n_accep = 0_8
 
@@ -38,6 +39,7 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
 
   psi_old = psi(a, r_old, nn, ne, Rn, Z)
 
+  ! Propagation
   do istep = 1,nmax
 
     energy = energy + e_loc(a,r_old,ne,Rn,nn,Z)
@@ -47,6 +49,7 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
       r_new(i,:) = r_old(i,:) + dt*d_old(i,:) + chi(i,:)*sq_dt
   
       call drift(a, r_new(i,:), nn, Rn, d_new(i,:))
+
       dq_new(i) = d_new(i,1)*d_new(i,1) + &
                   d_new(i,2)*d_new(i,2) + &
                   d_new(i,3)*d_new(i,3)
@@ -129,6 +132,7 @@ subroutine PDMC(a,dt,nmax,energy,accep,tau,E_ref,Rn,ne,nn,Z)
 
   psi_old = psi(a, r_old, nn, ne, Rn, Z)
 
+  ! Propagation
   do istep = 1,nmax
 
     e = e_loc(a,r_old,ne,Rn,nn,Z)

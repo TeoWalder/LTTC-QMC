@@ -109,50 +109,6 @@ real(8) function kinetic(a,r,ne,Rn,nn)
 
 end function kinetic
 
-real(8) function kinetic(a,r,ne,Rn,nn)
-
-  implicit none
-
-  integer, intent(in) :: ne, nn
-  real(8), intent(in) :: a, r(ne,3), Rn(nn,3)
-
-  integer :: i, j
-  real(8) :: dist, dr(3), k1, k2
-  real(8) :: psi_tot, psi_Ri, ratiopsi
-
-  real(8), external :: phi, psi_Rn
-
-  k1 = 0.d0
-  k2 = 0.d0
-  psi_tot = psi(a,r,nn,ne,Rn)
-
-  k1 = -a*a*0.5d0 * ne
-
-  do i = 1,nn
-    psi_Ri = psi_Rn(a,r,ne,Rn(i,:))
-    ratiopsi = psi_Ri/psi_tot
-
-    do j = 1,ne
-      dr(:) = r(j,:) - Rn(i,:)
-      dist = dsqrt(dr(1)*dr(1) + dr(2)*dr(2) + dr(3)*dr(3))
-  
-      if (dist.le.1.d-6) then
-        write(*,*) "*** WARNING, kinetic energy diverges ***"
-        k2 = k2 + huge(1.d0)
-      else if (psi_tot.le.1.d-6) then
-        write(*,*) "*** WARNING, kinetic energy diverges ***"
-        k2 = k2 + huge(1.d0)
-      else
-        k2 = k2 + a/dist * ratiopsi
-      end if
-
-    end do
-  end do
-
-  kinetic = k1 + k2
-
-end function kinetic
-
 
 !------- LOCAL ENERGY -------------------------------------!
 
@@ -216,27 +172,6 @@ real(8) function psi_Rn(a,r,ne,Rn)
 
 end function
 
-real(8) function phi(a,r,nn,ne,Rn)
-
-  implicit none
-
-  integer, intent(in) :: nn, ne
-  real(8), intent(in) :: a, r(ne,3), Rn(nn,3)
-
-  integer :: i
-  real(8) :: hp
-
-  real(8), external :: psi_Rn
-
-  psi = 0.d0
-
-  do i = 1,nn
-    hp  = psi_Rn(a,r,ne,Rn(i,:))
-    psi = psi + hp
-  end do
-
-end function psi
-
 
 
 !!!!!!!!!!!!!!  TEST  !!!!!!!!!!!!!!!!!!!
@@ -293,10 +228,4 @@ subroutine test_energies
 
 end subroutine test_energies
 
-subroutine test_phi
 
-  implicit none
-
-
-
-end subroutine test_phi

@@ -51,39 +51,37 @@ program qmc
   close(10)
 
   allocate(E(nruns), Acc(nruns))
+
+  ! read the geometry
   
   open(11, file=geom, status='old', iostat=ios)
 
-    if (ios.ne.0) then
-      write(*,*) '*** ERROR opening ', geom, '***'
-      stop
-    else
-      read(11,*) nn
-      read(11,*)
+    if (ios.ne.0) stop '*** ERROR opening xyz file'
+    read(11,*) nn
+    read(11,*)
 
   allocate(Rn(nn,3),Z(nn))
 
-      do i = 1,nn
-        read(11,*) atom, Rn(i,:)
+    do i = 1,nn
+      read(11,*) atom, Rn(i,:)
 
-        if (atom.eq.'H') then
-          Z(i) = 1.d0
-        else if (atom.eq.'He') then 
-          Z(i) = 2.d0
-        else 
-          stop 'Invalid atom'
-        end if
+      if (atom.eq.'H') then
+        Z(i) = 1.d0
+      else if (atom.eq.'He') then 
+        Z(i) = 2.d0
+      else 
+        stop 'Invalid atom'
+      end if
 
-      end do
-    end if
+    end do
 
   close(11)
 
-  ! Convert in a.u.
+  ! a.u. conversion
 
   Rn(:,:) = Ab*Rn(:,:)
 
-  ! Charge Center
+  ! compute Charge Center
 
   CC(:) = 0.d0
   do i = 1,nn
@@ -91,7 +89,7 @@ program qmc
   end do
   CC(:) = CC(:)/sum(Z(:))
 
-  ! Translate the geometry by the mass center
+  ! translate the geometry by the mass center
 
   Rn(:,1) = Rn(:,1) - CC(1)
   Rn(:,2) = Rn(:,2) - CC(2)
@@ -109,8 +107,7 @@ program qmc
       call PDMC(a, dt, nmax, E(irun), Acc(irun), tau, E_ref, Rn, ne, nn, Z)
     enddo
   else
-    write(*,*) '*** ERROR, no such method ***'
-    stop
+    stop '*** ERROR, no such method'
   end if
 
 
