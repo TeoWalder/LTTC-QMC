@@ -49,7 +49,7 @@ program qmc
 
   allocate(E(nruns), Acc(nruns))
 
-  ! read the geometry
+  ! read geometry
   
   open(11, file=geom, status='old', iostat=ios)
 
