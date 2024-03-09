@@ -119,10 +119,11 @@ program qmc
   call ave_error(Acc,nruns,ave,err)
   write(*,100) 'A = ', ave, ' +/- ', err
 
+  ! Plot local energy
   open(12, file='e_loc.dat')
-  do irun = 1,nruns
-    write(12,*) irun, E(irun)
-  end do
+    do irun = 1,nruns
+      write(12,*) irun, E(irun)
+    end do
   close(12)
 
   100 format(a4,f15.9,a7,e15.6)
