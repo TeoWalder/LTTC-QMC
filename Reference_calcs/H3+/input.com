@@ -1,0 +1,17 @@
+#N CCSD(T)/cc-pVTZ SP Geom=Connectivity 
+
+H3+
+
+1 1
+H 
+H 1 B1
+H 1 B2 2 A1
+
+B1 0.870510000
+B2 0.870510196
+A1 60.00000743
+
+1 2 1
+2 1 1
+3 
+

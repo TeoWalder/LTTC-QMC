@@ -1,0 +1,10 @@
+jobName=H3+
+jobEngine=gaussian
+jobDescription=Molecular Energy
+jobDate=2/26/2024 14:24
+jobHistory=
+outputLog=output.log
+inputGeometry=input.xyz
+outputGeometry=output.xyz
+checkpoint=output.chk
+jobStatus=complete

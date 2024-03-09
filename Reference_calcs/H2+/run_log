@@ -1,0 +1,5 @@
+Executing script: /home/calcuser/webmo/run_gaussian.cgi
+Creating working directory: /scratch_0/calcuser/webmo-8667/24457
+Script execution node: 192.168.0.1
+Job execution node(s): 192.168.0.1
+Executing command: /g09/g09
