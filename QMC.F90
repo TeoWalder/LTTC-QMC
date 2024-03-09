@@ -7,7 +7,7 @@ program qmc
   implicit none
   ! Parameters
   real(8), parameter :: Ab = 1.8897259886d0  ! Angstrom to Bohr conversion
-  ! Physical Variables
+  ! Physical variables
   integer              :: irun, ne, nn
   real(8)              :: ave, err
   real(8)              :: E_ref, a
@@ -15,7 +15,7 @@ program qmc
   real(8)              :: dt
   real(8)              :: tau
   real(8)              :: CC(3)
-  ! Tecnical stuff
+  ! Tecnical variables
   integer(8)        :: nmax
   integer           :: nruns
   integer           :: i, ios
@@ -29,23 +29,20 @@ program qmc
 
   open(10, file=inputfile, status='old', iostat=ios)
 
-    if (ios.ne.0) then
-      write(*,*) '*** ERROR opening input file ***'
-      stop
-    else
-      read(10,*) method                    ! var (vmc) or dif (pdmc)
-      read(10,*) a                         ! Wavefunction Parameter
-      read(10,*) ne                        ! n of Electrons
-      read(10,*) geom                      ! Coordinate file (.xyz)
-      read(10,*) dt                        ! Time Step
-      read(10,*) nmax                      ! n of Steps
-      read(10,*) nruns                     ! n of Walkers
-      if (method.eq.'dif') then
-        read(10,*)
-        read(10,*)
-        read(10,*) E_ref                   ! reference energy
-        read(10,*) tau                     ! projection time 
-      end if
+    if (ios.ne.0) stop '*** ERROR opening input file'
+
+    read(10,*) method                    ! var (vmc) or dif (pdmc)
+    read(10,*) a                         ! Wavefunction Parameter
+    read(10,*) ne                        ! n of Electrons
+    read(10,*) geom                      ! Coordinate file (.xyz)
+    read(10,*) dt                        ! Time Step
+    read(10,*) nmax                      ! n of Steps
+    read(10,*) nruns                     ! n of Walkers
+    if (method.eq.'dif') then
+      read(10,*)
+      read(10,*)
+      read(10,*) E_ref                   ! reference energy
+      read(10,*) tau                     ! projection time 
     end if
 
   close(10)
@@ -70,7 +67,7 @@ program qmc
       else if (atom.eq.'He') then 
         Z(i) = 2.d0
       else 
-        stop 'Invalid atom'
+        stop '*** ERROR: invalid atom in xyz file'
       end if
 
     end do
@@ -78,11 +75,9 @@ program qmc
   close(11)
 
   ! a.u. conversion
-
   Rn(:,:) = Ab*Rn(:,:)
 
   ! compute Charge Center
-
   CC(:) = 0.d0
   do i = 1,nn
     CC(:) = CC(:) + Z(i)*Rn(i,:)
@@ -90,7 +85,6 @@ program qmc
   CC(:) = CC(:)/sum(Z(:))
 
   ! translate the geometry by the mass center
-
   Rn(:,1) = Rn(:,1) - CC(1)
   Rn(:,2) = Rn(:,2) - CC(2)
   Rn(:,3) = Rn(:,3) - CC(3)
@@ -107,7 +101,7 @@ program qmc
       call PDMC(a, dt, nmax, E(irun), Acc(irun), tau, E_ref, Rn, ne, nn, Z)
     enddo
   else
-    stop '*** ERROR, no such method'
+    stop '*** ERROR: no such method'
   end if
 
 
