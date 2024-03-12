@@ -8,11 +8,4 @@ H3+.xyz		# Coordinate file (xyz)
 
 Only for Pure Diffusion Monte Carlo:
 -1.3 	  	# reference energy (a.u)
-10000		# projection time 
-
-Exact energies (CCSD(T) cc-pVTZ):
-H 	-0.5
-He 	-2.903
-H2+ 	-0.557
-H2 	-1.171
-H3+ 	-1.342
+10000		# projection time
