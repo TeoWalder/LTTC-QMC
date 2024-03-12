@@ -1,6 +1,5 @@
 # LTTC-QMC Project
-> LTTC Winter School 2024.
-> Organized by Toulouse III - Paul Sabatier University, 118 route de Narbonne, 31062 TOULOUSE CEDEX 9.
+> [Winter School LTTC](https://www.lcpq.ups-tlse.fr/lttc/) 2024.
 
 LTTC-QMC is a simple Quantum Monte Carlo program to compute energies over atomic and molecular hydrogen based systems using Variational Monte Carlo and Pure Diffusion Monte Carlo algorithms.
 The code uses nodeless functions to compute energies for simple systems having at least two electrons, such as Hydrogen and Helium atoms or Hydrogen based molecules (H~2~^+^, H~2~, H~3~^+^).
