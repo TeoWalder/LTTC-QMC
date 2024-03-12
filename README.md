@@ -32,8 +32,8 @@ The program will also output a ```e_loc.dat``` file you can plot to visualize th
 
 <img src="plot_example.png" width="500" height="400">
 
-You can find as references the single point calculations for the molecular speces in the ```References``` directory.
-The calculations are made with Gaussian using CCSD(T) method and cc-pVTZ basis set.
+You can find as references the single point ab initio calculations for the molecular speces in the ```References``` directory.
+These are computed using Gaussian with CCSD(T) method and cc-pVTZ basis set.
 
 ### Input files
 From ```qmc.inp``` you can choose the type of simulation, such *Variational* or *Pure Diffusion* Monte Carlo, tune its parameters and define all the variables.
@@ -42,7 +42,13 @@ The geometry file is a ```.xyz``` specifying the nuclear coordinates and its nam
 Both the files must be in the same directory as the executable.
 
 ## Tests
+The code comes along with some tests developed for the kinetic and potential energy calculations and also for the drift vector.
 
+To test the subroutines is necessary to compile runnung:
+```
+make tests
+```
+which generates two executables: ```text_en.x``` to test energies and ```test_drift.x``` to test the drift vector.
 
 ## Licensing
 The code in this project is licensed under GPL license. More on ```LICENSE``` file.
