@@ -28,9 +28,12 @@ After the executable runs succesfully, the output is printed on the terminal giv
 E =    -1.324283046   +/-    0.117287E-01
 A =     0.976170400   +/-    0.102687E-03
 ```
-You can also find an ```e_loc.dat``` file you can plot to look at the local energies per walker.
+The program will also output a ```e_loc.dat``` file you can plot to visualize the local energy per walker.
 
 <img src="plot_example.png" width="500" height="400">
+
+You can find as references the single point calculations for the molecular speces in the ```References``` directory.
+The calculations are made with Gaussian using CCSD(T) method and cc-pVTZ basis set.
 
 ### Input files
 From ```qmc.inp``` you can choose the type of simulation, such *Variational* or *Pure Diffusion* Monte Carlo, tune its parameters and define all the variables.
@@ -39,6 +42,7 @@ The geometry file is a ```.xyz``` specifying the nuclear coordinates and its nam
 Both the files must be in the same directory as the executable.
 
 ## Tests
+
 
 ## Licensing
 The code in this project is licensed under GPL license. More on ```LICENSE``` file.
