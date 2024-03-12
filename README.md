@@ -31,7 +31,7 @@ A =     0.976170400   +/-    0.102687E-03
 ```
 You can also find an ```e_loc.dat``` file you can plot to look at the local energies per walker.
 
-<img src="plot_example.png" width="1000" height="1000">
+<img src="plot_example.png" width="500" height="400">
 
 ### Input files
 From ```qmc.inp``` you can choose the type of simulation, such *Variational* or *Pure Diffusion* Monte Carlo, tune its parameters and define all the variables.
