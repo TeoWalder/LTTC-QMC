@@ -2,9 +2,7 @@
 > [Winter School LTTC](https://www.lcpq.ups-tlse.fr/lttc/) 2024.
 
 LTTC-QMC is a simple Quantum Monte Carlo program to compute energies over atomic and molecular hydrogen based systems using Variational Monte Carlo and Pure Diffusion Monte Carlo algorithms.
-The code uses nodeless functions to compute energies for simple systems having at least two electrons, such as Hydrogen and Helium atoms or Hydrogen based molecules (H<sub>2</sub><sup>+</sup>, H<sub>2</sub>, H<sub>3</sub><sup>+</sup>).
-
-$\Psi = \psi_a(1)\psi_a(2) + \psi_b(1)\psi_b(2)$
+The code uses nodeless ionic functions to compute energies for simple systems having at least two electrons, such as Hydrogen and Helium atoms or Hydrogen based molecules (H<sub>2</sub><sup>+</sup>, H<sub>2</sub>, H<sub>3</sub><sup>+</sup>).
 
 For more details consult the ```Documentation``` file.
 
