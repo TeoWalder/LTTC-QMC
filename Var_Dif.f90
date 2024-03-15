@@ -145,9 +145,8 @@ subroutine PDMC(a,dt,nmax,energy,accep,tau,E_ref,Rn,ne,nn,Z)
     ! compute pdmc weights
     w = w*dexp(-dt*(e - E_ref))
 
-    ! energy normalization update
+    ! energy normalization and update
     normalization = normalization + w
-    ! increase energy
     energy = energy + w*e
 
     ! update projection time
