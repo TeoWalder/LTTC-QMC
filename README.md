@@ -7,7 +7,7 @@ The code uses nodeless ionic functions to compute energies for simple systems ha
 For more details consult the ```Documentation``` file.
 
 ## Installing
-To let the program work you only need a Fortran compiler (such as *gfortran*) to compile the code.
+To let the program work you only need a Fortran compiler (*gfortran*,*ifort*,...) to compile the code.
 Then, you can clone the repository: ```https://github.com/TeoWalder/LTTC-QMC.git``` 
 or download and extract the `.zip` file from the GitHub page.
 
