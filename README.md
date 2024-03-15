@@ -39,8 +39,6 @@ These are computed using Gaussian with CCSD(T) method and cc-pVTZ basis set.
 From ```qmc.inp``` you can choose the type of simulation, such *Variational* or *Pure Diffusion* Monte Carlo, tune its parameters and define all the variables.
 The geometry file is a ```.xyz``` specifying the nuclear coordinates and its name must be specified inside the iput file. You can already find a set of prepared files in the directory ```Geometries/``` for all the tested systems.
 
-Both the files must be in the same directory as the executable.
-
 ## Tests
 The code comes along with some tests developed for the kinetic and potential energy calculations and also for the drift vector.
 
