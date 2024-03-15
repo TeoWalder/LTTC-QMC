@@ -27,11 +27,13 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
   energy = 0.d0
   n_accep = 0_8
 
+  ! initialization per each electron
   do i = 1,ne
     call random_gauss(r_old(i,:), 3)
 
     call drift(a, r_old(i,:), nn, Rn, d_old(i,:))
 
+    ! compute the square of the drift vector
     dq_old(i) = d_old(i,1)*d_old(i,1) + &
                 d_old(i,2)*d_old(i,2) + &
                 d_old(i,3)*d_old(i,3)
@@ -45,9 +47,11 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
     energy = energy + e_loc(a,r_old,ne,Rn,nn,Z)
 
     do i = 1,ne
+      ! electrons new move
       call random_gauss(chi(i,:), 3)
       r_new(i,:) = r_old(i,:) + dt*d_old(i,:) + chi(i,:)*sq_dt
-  
+
+      ! new drift and square drift
       call drift(a, r_new(i,:), nn, Rn, d_new(i,:))
 
       dq_new(i) = d_new(i,1)*d_new(i,1) + &
@@ -67,6 +71,7 @@ subroutine VMC(a,nmax,dt,energy,accep,Rn,ne,nn,Z)
     q = psi_new/psi_old
     q = dexp(-argexpo)*q*q
 
+    ! accept or reject
     call random_number(u)
 
     if (u.le.q) then
@@ -136,11 +141,16 @@ subroutine PDMC(a,dt,nmax,energy,accep,tau,E_ref,Rn,ne,nn,Z)
   do istep = 1,nmax
 
     e = e_loc(a,r_old,ne,Rn,nn,Z)
+
+    ! compute pdmc weights
     w = w*dexp(-dt*(e - E_ref))
 
+    ! energy normalization update
     normalization = normalization + w
+    ! increase energy
     energy = energy + w*e
 
+    ! update projection time
     tau_current = tau_current + dt
 
     ! Reset when tau is reached
