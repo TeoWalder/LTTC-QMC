@@ -30,7 +30,7 @@ A =     0.976170400   +/-    0.102687E-03
 ```
 The program will also output a ```e_loc.dat``` file you can plot to visualize the local energy per walker.
 
-<img src="plot_example.png" width="500" height="400" class="center">
+<img src="plot_example.png" class="center" width="500" height="400">
 
 You can find as references the single point ab initio calculations for the molecular speces in the ```References``` directory.
 These are computed using Gaussian with CCSD(T) method and cc-pVTZ basis set.
