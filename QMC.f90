@@ -68,7 +68,7 @@ program qmc
       else if (atom.eq.'He') then 
         Z(i) = 2.d0
       else 
-        stop 'Invalid atom'
+        stop '*** ERROR: invalid atom'
       end if
 
     end do
