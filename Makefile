@@ -1,7 +1,9 @@
+src = src/
+bin = bin/
+
 all:
-	gfortran -c subroutines.F90 psi_energies.F90 Var_Dif.f90
-	gfortran QMC.f90 -o qmc.x subroutines.o psi_energies.o Var_Dif.o
-	rm *.o
+	gfortran -c $(src)subroutines.F90 $(src)psi_energies.F90 $(src)Var_Dif.f90
+	gfortran $(src)QMC.f90 -o $(bin)qmc.x $(src)subroutines.o $(src)psi_energies.o $(src)Var_Dif.o
 tests:
-	gfortran -DTEST	psi_energies.F90 -o test_en.x
-	gfortran -DTEST	subroutines.F90 -o test_drift.x
+	gfortran -DTEST	$(src)psi_energies.F90 -o $(bin)test_en.x
+	gfortran -DTEST	$(src)subroutines.F90 -o $(bin)test_drift.x
